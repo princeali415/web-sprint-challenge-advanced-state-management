@@ -12,7 +12,7 @@ export class SmurfDisplay extends React.Component {
     render() {
         return(
         <div>
-            <Smurf smurfs={this.props.smurfs}/>
+            <Smurf smurf={this.props.smurfs}/>
         </div>)
     }
 }

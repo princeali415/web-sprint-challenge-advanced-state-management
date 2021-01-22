@@ -4,8 +4,8 @@ ADD_SMURF, POST_SMURF_DATA_FAILURE, POST_SMURF_DATA_SUCCESS} from '../actions/in
 export const initialState = {
     smurfs: [],
     isLoading: false,
-    getError: "",
-    postError: "",
+    error: "",
+    
 }
 
 const reducer = (state = initialState, action)=>{
@@ -14,7 +14,7 @@ const reducer = (state = initialState, action)=>{
             return {
                 ...state,
                 isLoading: true,
-                getError: '',
+                error: '',
             }
         case GET_SMURF_DATA_SUCCESS:
             return {
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action)=>{
             return {
                 ...state,
                 isLoading: false,
-                getError: action.payload,
+                error: action.payload,
             }
         case ADD_SMURF:
             return {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action)=>{
         case POST_SMURF_DATA_FAILURE:
             return {
                 ...state,
-                postError: action.payload,
+                error: action.payload,
                 isPosting: false,
             }
         default:
