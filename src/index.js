@@ -26,6 +26,6 @@ ReactDOM.render(
 );
 
 //Task List:
-//1. Add in all necessary components and libary methods.
-//2. Create a store that includes thunk middleware support.
-//3. Wrap the App component in a react-redux Provider element.
+//1. Add in all necessary components and libary methods. - DONE
+//2. Create a store that includes thunk middleware support. - DONE
+//3. Wrap the App component in a react-redux Provider element. - DONE

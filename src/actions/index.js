@@ -5,7 +5,7 @@ export const GET_SMURF_DATA_SUCCESS = "GET_SMURF_DATA_SUCCESS"
 export const GET_SMURF_DATA_FAILURE = "GET_SMURF_DATA_FAILURE"
 
 export const ADD_SMURF = "ADD_SMURF"
-export const POST_SMURF_DATA_SUCCESS = "POST_SMURF_DATA_SUCCESS"
+export const ADD_SMURF_FAIL = "ADD_SMURF_FAIL"
 export const POST_SMURF_DATA_FAILURE = "POST_SMURF_DATA_FAILURE"
 
 
@@ -27,7 +27,7 @@ export const getSmurfData = () => {
 
 export const postSmurfData = (obj) => dispatch => {
     if (!obj.name || !obj.position || !obj.nickname) {
-        dispatch({type: POST_SMURF_DATA_FAILURE, payload: `Please fill out required feilds`})
+        dispatch({type: ADD_SMURF_FAIL, payload: `Please fill out required feilds`})
     }
     else {
         axios
