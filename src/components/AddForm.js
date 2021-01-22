@@ -44,11 +44,11 @@ class AddForm extends React.Component {
                 <div className="form-group">
                     <label htmlFor="name">Name</label><br/>
                     <input onChange={this.handleChange} value={this.state.name} name="name" id="name" />
-                    <label htmlFor="name">Nickname</label><br/>
+                    <label htmlFor="nickname">Nickname</label><br/>
                     <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" />
-                    <label htmlFor="name">Position</label><br/>
+                    <label htmlFor="position">Position</label><br/>
                     <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" />
-                    <label htmlFor="name">Description</label><br/>
+                    <label htmlFor="description">Description</label><br/>
                     <input onChange={this.handleChange} value={this.state.description} name="description" id="description" />
                 </div>
 
