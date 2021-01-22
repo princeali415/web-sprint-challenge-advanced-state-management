@@ -1,14 +1,57 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {postSmurfData} from '../actions/index'
 
 class AddForm extends React.Component {
+
+    state = {
+        name: "",
+        position: "",
+        nickname: "",
+        description: "",
+      };
+
+    handleChange = e => {
+        if (e.target.name === "name") {
+                this.setState({ name: e.target.value });
+            } else if (e.target.name === "position") {
+                this.setState({ position: e.target.value });
+            } else if (e.target.name === "nickname") {
+                this.setState({ nickname: e.target.value });
+            } else if (e.target.name === "description") {
+                this.setState({ description: e.target.value });
+            }
+        }
+        
+    
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.postSmurfData(this.state);
+        console.log(this.state);
+        if (this.state.name && this.state.position && this.state.nickname) {
+          this.setState({
+            name: "",
+            position: "",
+            nickname: "",
+            description: "",
+          });
+        }
+      };
 
     render() {
         return(<section>
             <h2>Add Smurf</h2>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
+                    <input onChange={this.handleChange} value={this.state.name} name="name" id="name" />
+                    <label htmlFor="name">Nickname:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" />
+                    <label htmlFor="name">Positon:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" />
+                    <label htmlFor="name">Description:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.description} name="description" id="description" />
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
@@ -18,7 +61,11 @@ class AddForm extends React.Component {
     }
 }
 
-export default AddForm;
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, {postSmurfData})(AddForm)
 
 //Task List:
 //1. Add in all necessary import components and library methods.
