@@ -38,7 +38,8 @@ class AddForm extends React.Component {
       };
 
     render() {
-        return(<section>
+        return(
+        <section>
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
