@@ -8,9 +8,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 class App extends Component {
+
   componentDidMount() {
     axios.get('http://localhost:3333/smurfs').then(res=>{
-      console.log(res);
+      console.log(res.data);
     })
   }
   
@@ -18,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav className="navbar navbar-dark bg-primary">
-          <a className="navbar-brand">Smurf Village Database</a>
+          <a href='_blank' className="navbar-brand">Smurf Village Database</a>
         </nav>
         <main>
           <AddForm/>

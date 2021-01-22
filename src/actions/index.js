@@ -1,5 +1,50 @@
 import axios from 'axios';
 
+export const GET_SMURF_DATA_START = "GET_SMURF_DATA_START"
+export const GET_SMURF_DATA_SUCCESS = "GET_SMURF_DATA_SUCCESS"
+export const GET_SMURF_DATA_FAILURE = "GET_SMURF_DATA_FAILURE"
+
+export const ADD_SMURF = "ADD_SMURF"
+export const POST_SMURF_DATA_SUCCESS = "POST_SMURF_DATA_SUCCESS"
+export const POST_SMURF_DATA_FAILURE = "POST_SMURF_DATA_FAILURE"
+
+
+export const getSmurfData = () => {
+    return (dispatch) => {
+        dispatch({type:GET_SMURF_DATA_START})
+        axios
+            .get('http://localhost:3333/smurfs')
+            .then((res) => {
+                console.log('success', res)
+                dispatch({type:GET_SMURF_DATA_SUCCESS, payload: res.data})
+            })
+            .catch((err) => {
+                console.log(err)
+                dispatch({type:GET_SMURF_DATA_FAILURE, payload: err})
+            })
+    }
+}
+
+export const postSmurfData = (obj) => dispatch => {
+    if (!obj.name || !obj.position || !obj.nickname) {
+        dispatch({type: POST_SMURF_DATA_FAILURE, payload: `Please fill out required feilds`})
+    }
+    else {
+        axios
+            .post("http://localhost:3333/smurfs", obj)
+            .then(res => {
+                console.log(res);
+                dispatch({type: ADD_SMURF, payload: obj});
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({type: POST_SMURF_DATA_FAILURE, payload: err})
+            })
+    }
+}
+
+
+
 //Task List:
 //1. Add fetch smurfs action: 
 //              - fetch and return initial list of smurfs
