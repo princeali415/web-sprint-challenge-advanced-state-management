@@ -43,13 +43,13 @@ class AddForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">name:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.name} name="name" id="name" />
+                    <input onChange={this.handleChange} value={this.state.name} name="name" id="name" type='text' />
                     <label htmlFor="nickname">nickname:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" />
+                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
                     <label htmlFor="position">position:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" />
+                    <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
                     <label htmlFor="description">description:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.description} name="description" id="description" />
+                    <input onChange={this.handleChange} value={this.state.description} name="description" id="description" type='text' />
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: 
