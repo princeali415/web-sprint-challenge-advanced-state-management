@@ -2,38 +2,28 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {postSmurfData} from '../actions/index'
 
+const initalFormValues = {
+    name: "",
+    position: "",
+    nickname: "",
+    description: "",
+}
+
 class AddForm extends React.Component {
 
-    state = {
-        name: "",
-        position: "",
-        nickname: "",
-        description: "",
-      };
+    state = initalFormValues;
 
     handleChange = e => {
-        if (e.target.name === "name") {
-                this.setState({ name: e.target.value });
-            } else if (e.target.name === "position") {
-                this.setState({ position: e.target.value });
-            } else if (e.target.name === "nickname") {
-                this.setState({ nickname: e.target.value });
-            } else if (e.target.name === "description") {
-                this.setState({ description: e.target.value });
-            }
-        }
+        this.setState({
+            [e.target.name]: e.target.value,
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.postSmurfData(this.state);
-        console.log(this.state);
         if (this.state.name && this.state.position && this.state.nickname) {
-          this.setState({
-            name: "",
-            position: "",
-            nickname: "",
-            description: "",
-          });
+          this.setState(initalFormValues);
         }
       };
 
@@ -43,14 +33,14 @@ class AddForm extends React.Component {
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label for="name">Name:</label><br/>
+                    <label htmlFor="name">Name:</label><br/>
                     <input onChange={this.handleChange} value={this.state.name} name="name" id="name" type='text' />
-                    <label for="nickname">Nickname:</label><br/>
+                    <label htmlFor="nickname">Nickname:</label><br/>
                     <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
-                    <label for="position">Position:</label><br/>
-                    <input for={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
-                    <label for="description">Description:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.description} name="description" id="description" type='text' />
+                    <label htmlFor="position">Position:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
+                    <label htmlFor="description">Description:</label><br/>
+                    <textarea onChange={this.handleChange} value={this.state.description} rows={5} col={5} name="description" id="description" type='text' />
                 </div>
 
                 {this.props.formErrors ? 
