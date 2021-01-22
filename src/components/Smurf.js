@@ -3,11 +3,12 @@ import React from 'react';
 class Smurf extends React.Component {
     render() {
         const { smurfs } = this.props;
+        console.log(smurfs)
 
         return(
         <div data-testid="smurf" className="card">
             {smurfs.map((smurf, index) => (
-                <div key={index}>
+                <div className='smurf-card' key={index}>
                     <h2>{smurf.name}</h2>
                     <h3>"{smurf.nickname}"</h3>
                     <h4>{smurf.position}</h4>
