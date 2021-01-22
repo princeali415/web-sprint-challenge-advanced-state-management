@@ -12,7 +12,10 @@ export class SmurfDisplay extends React.Component {
     render() {
         return(
         <div>
-            <Smurf smurf={this.props.smurfs}/>
+            {this.props.smurfs.map((smurf, index) => (
+                <Smurf key={index} smurf={smurf} />
+            ))}
+            
         </div>)
     }
 }
