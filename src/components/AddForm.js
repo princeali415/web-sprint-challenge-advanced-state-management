@@ -22,8 +22,6 @@ class AddForm extends React.Component {
                 this.setState({ description: e.target.value });
             }
         }
-        
-    
 
     handleSubmit = (e) => {
         e.preventDefault();
