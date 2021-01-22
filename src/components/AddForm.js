@@ -43,14 +43,18 @@ class AddForm extends React.Component {
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">name:</label><br/>
+                    <label htmlFor="name">Name:<br/>
                     <input onChange={this.handleChange} value={this.state.name} name="name" id="name" type='text' />
-                    <label htmlFor="nickname">nickname:</label><br/>
+                    </label>
+                    <label htmlFor="nickname">Nickname:<br/>
                     <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
-                    <label htmlFor="position">position:</label><br/>
+                    </label>
+                    <label htmlFor="position">Position:<br/>
                     <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
-                    <label htmlFor="description">description:</label><br/>
+                    </label>
+                    <label htmlFor="description">Description:<br/>
                     <input onChange={this.handleChange} value={this.state.description} name="description" id="description" type='text' />
+                    </label>
                 </div>
 
                 {this.props.postError ? 
@@ -58,13 +62,6 @@ class AddForm extends React.Component {
                     Error: {this.props.postError}
                 </div>
                 : ''}
-
-
-
-                {/* <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: 
-                    {this.props.postError ? <div>{this.props.postError}</div> : null} 
-                 </div> */}
-
 
                 <button>Submit Smurf</button>
             </form>
