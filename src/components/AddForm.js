@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {postSmurfData, errorText} from '../actions/index'
+import {postSmurfData} from '../actions/index'
 
 const initalFormValues = {
     name: "",
@@ -35,14 +35,42 @@ class AddForm extends React.Component {
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.name} name="name" id="name" type='text' />
-                    <label htmlFor="position">Position:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
-                    <label htmlFor="nickname">Nickname:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
-                    <label htmlFor="description">Description:</label><br/>
-                    <textarea onChange={this.handleChange} value={this.state.description} rows={5} col={5} name="description" id="description" type='text' />
+                <label htmlFor='name'>Name:</label>
+            <br />
+            <input
+              type='text'
+              value={this.state.name}
+              onChange={this.handleChange}
+              name='name'
+              id='name'
+            />
+            <label htmlFor='position'>Position:</label>
+            <br />
+            <input
+              type='text'
+              value={this.state.position}
+              onChange={this.handleChange}
+              name='position'
+              id='position'
+            />
+            <label htmlFor='nickname'>Nickname:</label>
+            <br />
+            <input
+              type='text'
+              value={this.state.nickname}
+              onChange={this.handleChange}
+              name='nickname'
+              id='nickname'
+            />
+            <label htmlFor='description'>Description:</label>
+            <br />
+            <input
+              type='text'
+              value={this.state.description}
+              onChange={this.handleChange}
+              name='description'
+              id='description'
+            />
                 </div>
 
                 {this.props.formErrors ? 
@@ -66,7 +94,7 @@ const mapStateToProps = (state) => ({
     formErrors: state.formErrors,
 })
 
-export default connect(mapStateToProps, {postSmurfData, errorText})(AddForm)
+export default connect(mapStateToProps, {postSmurfData})(AddForm)
 
 //Task List:
 //1. Add in all necessary import components and library methods.
