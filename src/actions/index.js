@@ -6,7 +6,7 @@ export const GET_SMURF_DATA_FAILURE = "GET_SMURF_DATA_FAILURE"
 
 export const ADD_SMURF = "ADD_SMURF"
 export const ADD_SMURF_FAIL = "ADD_SMURF_FAIL"
-export const POST_SMURF_DATA_FAILURE = "POST_SMURF_DATA_FAILURE"
+
 
 
 export const getSmurfData = () => {
@@ -40,10 +40,7 @@ export const getSmurfData = () => {
 }
 
 export const postSmurfData = (obj) => dispatch => {
-    if (!obj.name || !obj.position || !obj.nickname) {
-        dispatch({type: ADD_SMURF_FAIL,  payload: `Please fill out required fields - ${!obj.name ? " name" : ""} ${!obj.position ? " position" : ""} ${!obj.nickname ? " nickname" : ""}`})
-    }
-    else {
+    
         axios
             .post("http://localhost:3333/smurfs", obj)
             .then(res => {
@@ -55,7 +52,7 @@ export const postSmurfData = (obj) => dispatch => {
                 dispatch({type: ADD_SMURF_FAIL, payload: err.message})
             })
     }
-}
+
 
 export const errorText = () => dispatch => {
     dispatch({type: ADD_SMURF_FAIL})

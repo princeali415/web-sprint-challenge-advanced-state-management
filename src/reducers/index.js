@@ -39,12 +39,6 @@ const reducer = (state = initialState, action)=>{
                 ...state,
                 error: action.payload,
             }
-        // case POST_SMURF_DATA_FAILURE:
-        //     return {
-        //         ...state,
-        //         error: action.payload,
-        //         isLoading: false,
-        //     }
         default:
             return state
     }
