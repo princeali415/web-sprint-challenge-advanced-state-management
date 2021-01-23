@@ -5,7 +5,7 @@ export const initialState = {
     smurfs: [],
     isLoading: false,
     error: "",
-    formErrors: "",
+
 }
 
 const reducer = (state = initialState, action)=>{
@@ -32,17 +32,17 @@ const reducer = (state = initialState, action)=>{
             return {
                 ...state,
                 smurfs: [...state.smurfs, action.payload],
-                formErrors: "",
+                error: "",
             }
         case ADD_SMURF_FAIL:
             return {
                 ...state,
-                formErrors: action.payload,
+                error: action.payload,
             }
         case POST_SMURF_DATA_FAILURE:
             return {
                 ...state,
-                formErrors: action.payload,
+                error: action.payload,
                 isLoading: false,
             }
         default:
