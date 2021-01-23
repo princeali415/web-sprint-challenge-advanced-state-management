@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps, {postSmurfData})(AddForm)
+export default connect(mapStateToProps, {postSmurfData, errorText})(AddForm)
 
 //Task List:
 //1. Add in all necessary import components and library methods.
