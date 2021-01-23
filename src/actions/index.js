@@ -41,7 +41,7 @@ export const getSmurfData = () => {
 
 export const postSmurfData = (obj) => dispatch => {
     if (!obj.name || !obj.position || !obj.nickname) {
-        dispatch({type: ADD_SMURF_FAIL,  payload: `Please fill out required fields - ${!obj.name ? " name" : ""} ${!obj.position ? " position" : ""} ${!obj.nickname ? " nickname" : "d"}`})
+        dispatch({type: ADD_SMURF_FAIL,  payload: `Please fill out required fields - ${!obj.name ? " name" : ""} ${!obj.position ? " position" : ""} ${!obj.nickname ? " nickname" : ""}`})
     }
     else {
         axios
@@ -52,13 +52,13 @@ export const postSmurfData = (obj) => dispatch => {
             })
             .catch(err => {
                 console.log(err.message)
-                dispatch({type: POST_SMURF_DATA_FAILURE, payload: err.message})
+                dispatch({type: ADD_SMURF_FAIL, payload: err.message})
             })
     }
 }
 
 export const errorText = () => dispatch => {
-    dispatch({type: POST_SMURF_DATA_FAILURE})
+    dispatch({type: ADD_SMURF_FAIL})
 }
 
 

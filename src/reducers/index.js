@@ -1,5 +1,5 @@
 import {GET_SMURF_DATA_START, GET_SMURF_DATA_SUCCESS, GET_SMURF_DATA_FAILURE,
-ADD_SMURF, POST_SMURF_DATA_FAILURE, ADD_SMURF_FAIL} from '../actions/index'
+ADD_SMURF, ADD_SMURF_FAIL} from '../actions/index'
 
 export const initialState = {
     smurfs: [],
@@ -39,12 +39,12 @@ const reducer = (state = initialState, action)=>{
                 ...state,
                 error: action.payload,
             }
-        case POST_SMURF_DATA_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                isLoading: false,
-            }
+        // case POST_SMURF_DATA_FAILURE:
+        //     return {
+        //         ...state,
+        //         error: action.payload,
+        //         isLoading: false,
+        //     }
         default:
             return state
     }
