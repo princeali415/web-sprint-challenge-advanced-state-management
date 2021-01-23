@@ -24,11 +24,9 @@ class AddForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.postSmurfData(this.state);
-        if (this.props.formErrors !== '') {
-          errorText()
-          console.log(errorText())
-        }; 
-        this.setState(initalFormValues);
+        if (this.state.name && this.state.position && this.state.nickname) {
+            this.setState(initalFormValues);
+        }
       };
 
     render() {
@@ -39,10 +37,10 @@ class AddForm extends React.Component {
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
                     <input onChange={this.handleChange} value={this.state.name} name="name" id="name" type='text' />
-                    <label htmlFor="nickname">Nickname:</label><br/>
-                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
                     <label htmlFor="position">Position:</label><br/>
                     <input onChange={this.handleChange} value={this.state.position} name="position" id="postion" type='text' />
+                    <label htmlFor="nickname">Nickname:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.nickname} name="nickname" id="nickname" type='text' />
                     <label htmlFor="description">Description:</label><br/>
                     <textarea onChange={this.handleChange} value={this.state.description} rows={5} col={5} name="description" id="description" type='text' />
                 </div>
@@ -61,9 +59,12 @@ class AddForm extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return state
-}
+const mapStateToProps = (state) => ({
+    smurfs: state.smurfs,
+    isLoading: state.isLoading,
+    error: state.error,
+    formErrors: state.formErrors,
+})
 
 export default connect(mapStateToProps, {postSmurfData, errorText})(AddForm)
 
