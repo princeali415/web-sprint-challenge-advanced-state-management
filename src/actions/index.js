@@ -48,8 +48,8 @@ export const postSmurfData = (obj) => dispatch => {
                 dispatch({type: ADD_SMURF, payload: obj});
             })
             .catch(err => {
-                console.log(err.message)
-                dispatch({type: ADD_SMURF_FAIL, payload: err.message})
+                console.log(err)
+                dispatch({type: ADD_SMURF_FAIL, payload: err})
             })
     }
 
