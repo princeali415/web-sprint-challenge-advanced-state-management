@@ -41,7 +41,7 @@ export const getSmurfData = () => {
 
 export const postSmurfData = (obj) => dispatch => {
     if (!obj.name || !obj.position || !obj.nickname) {
-        dispatch({type: ADD_SMURF_FAIL, payload: `Please fill out required feilds`})
+        dispatch({type: ADD_SMURF_FAIL,  payload: `Please fill out required fields - ${!obj.name ? "*name" : ""} ${!obj.position ? "*position" : ""} ${!obj.nickname ? "*nickname" : ""}`})
     }
     else {
         axios
