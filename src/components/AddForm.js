@@ -1,17 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {postSmurfData} from '../actions/index'
+import {postSmurfData, errorText} from '../actions/index'
 
 const initalFormValues = {
     name: "",
     position: "",
     nickname: "",
     description: "",
+    id: Date.now(),
 }
 
 class AddForm extends React.Component {
 
-    state = initalFormValues;
+    state = initalFormValues
+
 
     handleChange = e => {
         this.setState({
@@ -22,9 +24,11 @@ class AddForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.postSmurfData(this.state);
-        if (this.state.name && this.state.position && this.state.nickname) {
-          this.setState(initalFormValues);
-        }
+        if (this.props.formErrors !== '') {
+          errorText()
+          console.log(errorText())
+        }; 
+        this.setState(initalFormValues);
       };
 
     render() {

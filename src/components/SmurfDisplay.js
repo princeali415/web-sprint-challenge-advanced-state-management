@@ -10,22 +10,29 @@ export class SmurfDisplay extends React.Component {
     }
 
     render() {
-        return(
-        <div>
-            {this.props.smurfs.map((smurf, index) => (
-                <Smurf key={index} smurf={smurf} />
-            ))}
-            
-        </div>)
+
+        if(this.props.isLoading){
+            return( 
+                <div className='loading-smurfs'>
+                    <h1>LOADING SMURFS...</h1>
+                </div>
+            )
+        }else {
+            return(
+                <div>
+                    {this.props.smurfs.map((smurf, index) => (
+                        <Smurf key={index} smurf={smurf} />
+                    ))}  
+                </div>)}
+        }
     }
-}
 
 const mapStateToProps = (state) => {
     return {
       smurfs: state.smurfs,
       isLoading: state.isLoading,
       error: state.error,
-      formErrors: state.formErrors
+      formErrors: state.formErrors,
     };
   };
   

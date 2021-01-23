@@ -12,16 +12,30 @@ export const POST_SMURF_DATA_FAILURE = "POST_SMURF_DATA_FAILURE"
 export const getSmurfData = () => {
     return (dispatch) => {
         dispatch({type:GET_SMURF_DATA_START})
-        axios
-            .get('http://localhost:3333/smurfs')
-            .then((res) => {
-                console.log('success', res)
-                dispatch({type:GET_SMURF_DATA_SUCCESS, payload: res.data})
-            })
-            .catch((err) => {
-                console.log(err)
-                dispatch({type:GET_SMURF_DATA_FAILURE, payload: err})
-            })
+
+        setTimeout(() => {              //using setTimeout to check if loading page is working
+            axios
+                .get('http://localhost:3333/smurfs')
+                .then((res) => {
+                    console.log('success', res)
+                    dispatch({type:GET_SMURF_DATA_SUCCESS, payload: res.data})
+                })
+                .catch((err) => {
+                    console.log(err)
+                    dispatch({type:GET_SMURF_DATA_FAILURE, payload: err})
+                })
+        }, 1500)
+
+        // axios
+        //     .get('http://localhost:3333/smurfs')
+        //     .then((res) => {
+        //         console.log('success', res)
+        //         dispatch({type:GET_SMURF_DATA_SUCCESS, payload: res.data})
+        //     })
+        //     .catch((err) => {
+        //         console.log(err)
+        //         dispatch({type:GET_SMURF_DATA_FAILURE, payload: err})
+        //     })
     }
 }
 
@@ -38,9 +52,13 @@ export const postSmurfData = (obj) => dispatch => {
             })
             .catch(err => {
                 console.log(err)
-                dispatch({type: POST_SMURF_DATA_FAILURE, payload: err})
+                dispatch({type: POST_SMURF_DATA_FAILURE, payload: err.message})
             })
     }
+}
+
+export const errorText = () => dispatch => {
+    dispatch({type: POST_SMURF_DATA_FAILURE})
 }
 
 
